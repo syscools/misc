@@ -3,6 +3,20 @@
 
 import sys
 
+def from_fenstring(fenstr):
+    a = fenstr.split('/')
+    board = []
+    for rowstr in a:
+        rowline = []
+        for piece in rowstr:
+            if piece.isdigit():
+                for j in xrange(int(piece)):
+                    rowline.append(' ')
+            else:
+                rowline.append(piece)
+        board.append(rowline)
+    return board
+
 def row_desc(r):
     def conv(c):
         return [[' ']*int(x) if x.isdigit() else x for x in c]
